@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>시스템 공지사항</title>
+
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            background: #2c3e50;
+            color: white;
+            padding-top: 50px;
+        }
+
+        .notice-box {
+            background: white;
+            color: #333;
+            display: inline-block;
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 500px;
+            text-align: left;
+        }
+
+        h1 {
+            color: #c0392b;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="notice-box">
+        <h1>시스템 점검 및 공지</h1>
+
+        <p><strong>[자동화 완료 알림]</strong></p>
+
+        <p>
+            현재 Jenkins CI/CD 파이프라인이 성공적으로 구축되었습니다.
+            이제 GitHub에 코드를 Push하는 것만으로 모든 배포 프로세스가
+            자동으로 진행됩니다.
+        </p>
+
+        <ul>
+            <li>대상 서버: 10.10.8.48</li>
+            <li>포트: 3000 (Express Node.js)</li>
+            <li>동작 확인: Webhook 트리거 성공</li>
+        </ul>
+
+        <p>
+            문의 사항은 관리자 (Kwangjin Kim)에게 연락 바랍니다.
+        </p>
+
+        <a href="index.html" class="back-link">
+            ← 메인화면으
+
