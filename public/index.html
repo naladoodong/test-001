@@ -1,58 +1,68 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>나만의 CI/CD 웹사이트</title>
+    <title>Webhook Monitor</title>
 
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f2f5;
-            color: #333;
+            font-family: sans-serif;
             text-align: center;
-            padding: 10%;
+            background: #2c3e50;
+            color: white;
+            padding-top: 50px;
         }
 
-        .card {
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        .box {
+            background: #34495e;
             display: inline-block;
+            padding: 30px;
+            border-radius: 15px;
+            border: 3px solid #27ae60;
         }
 
-        h1 {
-            color: #0056b3;
-            margin-bottom: 10px;
-        }
-
-        p {
-            font-size: 1.1em;
-            color: #555;
-        }
-
-        .highlight {
+        .status {
+            color: #27ae60;
             font-weight: bold;
-            color: #e83e8c;
+            font-size: 1.2em;
+        }
+
+        .msg {
+            background: #222;
+            padding: 10px;
+            border-radius: 5px;
+            color: #f1c40f;
+            margin: 20px 0;
         }
     </style>
 </head>
 
 <body>
-    <div class="card">
-        <h1>완전 자동화 배포 성공!</h1>
+    <div class="box">
+        <h1>Webhook 실시간 배포 모니터</h1>
 
-        <p>
-            이제 밋밋한 텍스트가 아닌,
-            <span class="highlight">진짜 웹 페이지</span>가 배포되었습니다.
+        <p class="status">
+            자동 배포 시스템 가동 중
         </p>
 
-        <p>
-            개발자가 코드를 Push하기만 하면,
-            Jenkins가 빌드하고 Docker가 실행합니다.
-        </p>
+        <div class="msg" id="commit">
+            업데이트 대기 중...
+        </div>
+
+        <p id="time"></p>
     </div>
+
+    <script>
+        fetch('/info')
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('commit').innerText =
+                    "최신 커밋: " + data.commitMsg;
+
+                document.getElementById('time').innerText =
+                    "배포 완료 시간: " + data.buildTime;
+            });
+    </script>
 </body>
 </html>
 
